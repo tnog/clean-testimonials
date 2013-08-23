@@ -121,6 +121,10 @@ function shortcode_testimonial_submission ( $atts ) {
 		<label for="thumbnail">Thumbnail <em>(optional)</em></label><br />
 		<input type="file" name="thumbnail" /><br />
 		
+		<label for="permission">Would you like your contact details hidden (EG, email and website)?</label><br />
+		<input type="radio" name="permission" value="no" required="required" />&nbsp;No<br />
+		<input type="radio" name="permission" value="yes" required="required" />&nbsp;Yes<br />
+		
 		<!-- hidden postback test field -->
 		<input type="hidden" name="testimonial-postback" value="true" />
 		
