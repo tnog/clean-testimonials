@@ -51,7 +51,36 @@ add_shortcode( 'testimonials', 'shortcode_testimonials' );
 // This shortcode outputs a form which visitors can use to submit a testimonial
 function shortcode_testimonial_submission ( $atts ) {
 
+	?>
 	
+	<form id="add-testimonial" name="add-testimonial" method="POST" action="<?php the_permalink(); ?>">
+	
+		<label for="title">Testimonial Title (eg, &quot;I'm so super happy!&quot;)</label><br />
+		<input type="text" name="title" required="required"/><br />
+		
+		<label for="testimonial">Your Testimonial (be as descriptive as you like here!)</label><br />
+		<textarea name="testimonial" rows="10" cols="20" required="required"></textarea>
+		
+		<label for="name">Your Name</label><br />
+		<input type="text" name="testimonial_client_name" required="required"/><br />
+		
+		<label for="name">Company Name <em>(optional)</em></label><br />
+		<input type="text" name="testimonial_client_company_name" /><br />
+		
+		<label for="name">Your Email <em>(optional)</em></label><br />
+		<input type="text" name="testimonial_client_email" /><br />
+		
+		<label for="name">Your Website <em>(optional)</em></label><br />
+		<input type="text" name="testimonial_client_company_website" /><br />
+		
+		<!-- hidden postback test field -->
+		<input type="hidden" name="testimonial-postback" value="true" />
+		
+		<input type="submit" id="submit-testimonial" value="Submit Testimonial" />
+	
+	</form>
+	
+	<?php
 
 }
 add_shortcode( 'testimonial-submission-form', 'shortcode_testimonial_submission' );
