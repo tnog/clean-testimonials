@@ -129,7 +129,10 @@ final class Plugify_Clean_Testimonials {
 		switch( $column ) {
 		
 			case 'testimonial_category':
-				echo get_the_term_list( $post->ID, 'testimonial_category', null, ', ', null );
+			
+				$list = get_the_term_list( $post->ID, 'testimonial_category', null, ', ', null );
+				echo $list == '' ? '<em>N/A</em>' : $list;
+				
 				break;
 				
 			case 'testimonial_shortcode':
@@ -146,7 +149,9 @@ final class Plugify_Clean_Testimonials {
 				break;
 				
 			default:
-				echo get_post_meta( $post->ID, $column, true );	
+			
+				$value = get_post_meta( $post->ID, $column, true );
+				echo $value == '' ? '<em>N/A</em>' : $value;
 		
 		}
 	
