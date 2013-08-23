@@ -2,7 +2,7 @@
 
 // Core class for plugin functionality
 
-final class Plugify_Simple_Testimonials {
+final class Plugify_Clean_Testimonials {
 	
 	public function __construct () {
 	

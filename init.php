@@ -11,8 +11,8 @@ Author URI: http://www.lukerollans.me
 $path = trailingslashit( dirname( __FILE__ ) );
 
 // Ensure the Post Navigator class has been defined
-if( !class_exists( 'Plugify_Simple_Testimonials' ) )
-require_once( $path . 'class.simple-testimonials.php' );
+if( !class_exists( 'Plugify_Clean_Testimonials' ) )
+require_once( $path . 'class.clean-testimonials.php' );
 
 if( !class_exists( 'WP_Testimonial' ) )
 require_once( $path . 'class.wp-testimonial.php' );
@@ -20,6 +20,6 @@ require_once( $path . 'class.wp-testimonial.php' );
 require_once( $path . 'lib/functions.php' );
 require_once( $path . 'lib/shortcodes.php' );
 
-new Plugify_Simple_Testimonials();
+new Plugify_Clean_Testimonials();
 
 ?>
