@@ -137,7 +137,12 @@ final class Plugify_Clean_Testimonials {
 				break;
 				
 			case 'testimonial_thumbnail':
-				echo 'No thumbnail supplied';
+
+				if( has_post_thumbnail( $post->ID ) )
+					echo wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), array( 64, 64 ) );
+				else
+					echo 'No thumbnail supplied';
+				
 				break;
 				
 			default:
