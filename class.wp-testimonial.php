@@ -38,7 +38,9 @@ final class WP_Testimonial {
 	
 			<h3><?php echo $this->post_title; ?></h3>
 			
-			<?php echo $this->post_content; ?>
+			<blockquote>
+				<?php echo $this->post_content; ?>
+			</blockquote>
 			
 			<h5><?php echo $this->client; ?>,<br /><?php echo $this->company; ?></h5>
 		
