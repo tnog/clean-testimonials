@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Simple Testimonials
+Plugin Name: Clean Testimonials
 Plugin URI: http://www.plugify.com.au/plugin/simple-testimonials
 Description: Allows you to easily and quickly add Testimonials to your WordPress website
 Author: Luke Rollans
