@@ -53,6 +53,15 @@ function shortcode_testimonial_submission ( $atts ) {
 
 	if( isset( $_POST['testimonial-postback'] ) ):
 	
+		// Require WordPress core functions we require for file upload
+		if( !function_exists( 'media_handle_upload' ) ) {
+		
+			require( ABSPATH . 'wp-admin/includes/image.php' );
+			require( ABSPATH . 'wp-admin/includes/file.php' );
+			require( ABSPATH . 'wp-admin/includes/media.php' );
+			
+		}
+		
 		$post = array(
 			
 			'ID' => NULL,
@@ -71,6 +80,10 @@ function shortcode_testimonial_submission ( $atts ) {
 			update_post_meta( $post_id, 'testimonial_client_email', $_POST['testimonial_client_email'] );
 			update_post_meta( $post_id, 'testimonial_client_company_website', $_POST['testimonial_client_company_website'] );
 			
+			if( !empty( $_FILES['thumbnail']['tmp_name'] ) )
+				if( $attachment_id = media_handle_upload( 'thumbnail', $post_id ) )
+					update_post_meta( $post_id, '_thumbnail_id', $attachment_id );
+			
 			echo '<p>We successfully received your testimonial. If approved, it will appear on our website. Thank you!</p>';						
 		
 		}
@@ -83,7 +96,7 @@ function shortcode_testimonial_submission ( $atts ) {
 	else:
 	?>
 	
-	<form id="add-testimonial" name="add-testimonial" method="POST" action="<?php the_permalink(); ?>">
+	<form id="add-testimonial" enctype="multipart/form-data" name="add-testimonial" method="POST" action="<?php the_permalink(); ?>">
 	
 		<label for="testimonial_title">Testimonial Title (eg, &quot;I'm so super happy!&quot;)</label><br />
 		<input type="text" name="testimonial_title" required="required"/><br />
@@ -102,6 +115,9 @@ function shortcode_testimonial_submission ( $atts ) {
 		
 		<label for="testimonial_client_company_website">Your Website <em>(optional)</em></label><br />
 		<input type="text" name="testimonial_client_company_website" /><br />
+		
+		<label for="thumbnail">Thumbnail <em>(optional)</em></label><br />
+		<input type="file" name="thumbnail" /><br />
 		
 		<!-- hidden postback test field -->
 		<input type="hidden" name="testimonial-postback" value="true" />
