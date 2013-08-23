@@ -56,9 +56,9 @@ function shortcode_testimonial_submission ( $atts ) {
 		// Require WordPress core functions we require for file upload
 		if( !function_exists( 'media_handle_upload' ) ) {
 		
-			require( ABSPATH . 'wp-admin/includes/image.php' );
-			require( ABSPATH . 'wp-admin/includes/file.php' );
-			require( ABSPATH . 'wp-admin/includes/media.php' );
+			require_once( ABSPATH . 'wp-admin/includes/image.php' );
+			require_once( ABSPATH . 'wp-admin/includes/file.php' );
+			require_once( ABSPATH . 'wp-admin/includes/media.php' );
 			
 		}
 		
