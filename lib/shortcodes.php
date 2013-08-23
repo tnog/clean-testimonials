@@ -64,7 +64,7 @@ function shortcode_testimonial_submission ( $atts ) {
 		<input type="text" name="title" required="required"/><br />
 		
 		<label for="testimonial">Your Testimonial (be as descriptive as you like here!)</label><br />
-		<textarea name="testimonial" rows="10" cols="20" required="required"></textarea>
+		<textarea name="testimonial" rows="10" cols="20" required="required"></textarea><br />
 		
 		<label for="name">Your Name</label><br />
 		<input type="text" name="testimonial_client_name" required="required"/><br />
