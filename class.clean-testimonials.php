@@ -75,7 +75,7 @@ final class Plugify_Clean_Testimonials {
 			'update_item' => __( 'Update Testimonial Category' ),
 			'add_new_item' => __( 'Add New Testimonial Category' ),
 			'new_item_name' => __( 'New Testimonial Category' ),
-			'menu_name' => __( 'Categories' )
+			'menu_name' => __( 'Testimonial Categories' )
 	  ); 
 	  	
 		register_taxonomy( 'testimonial_category', 'testimonial', array(
