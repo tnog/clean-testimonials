@@ -35,12 +35,14 @@ function shortcode_testimonials ( $atts ) {
 	
 	if( $testimonials = get_posts( $args ) ) {
 	
+		echo '<div class="testimonial-category">';
 		foreach( $testimonials as &$testimonial ) {
 		
 			$testimonial = new WP_Testimonial( $testimonial->ID );
 			$testimonial->render();
 		
 		}	
+		echo '</div>';
 		
 	}
 
