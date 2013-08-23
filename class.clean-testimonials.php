@@ -204,7 +204,7 @@ final class Plugify_Clean_Testimonials {
 			</tr>
 			<tr>
 				<td valign="middle" align="left"><label for="testimonial_client_website">Website</label></td>
-				<td valign="middle" align="left"><input type="text" name="testimonial_client_website" value="<?php echo get_post_meta( $post->ID, 'testimonial_client_website', true ); ?>" />
+				<td valign="middle" align="left"><input type="text" name="testimonial_client_company_website" value="<?php echo get_post_meta( $post->ID, 'testimonial_client_company_website', true ); ?>" />
 				<td valign="middle" align="left"><em>Website of whom is giving the testimonial</em></td>
 			</tr>
 		

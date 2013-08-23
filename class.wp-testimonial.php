@@ -26,7 +26,7 @@ final class WP_Testimonial {
 			$this->client = $meta['testimonial_client_name'][0];
 			$this->company = $meta['testimonial_client_company_name'][0];
 			$this->email = $meta['testimonial_client_email'][0];
-			$this->website = $meta['testimonial_client_website'][0];
+			$this->website = $meta['testimonial_client_company_website'][0];
 			
 		}
 	
@@ -40,8 +40,7 @@ final class WP_Testimonial {
 			
 			<?php echo $this->post_content; ?>
 			
-			<h5><?php echo $this->client; ?>,</h5>
-			<h6><?php echo $this->company; ?></h6>
+			<h5><?php echo $this->client; ?>,<br /><?php echo $this->company; ?></h5>
 		
 		</div>
 		
