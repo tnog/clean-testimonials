@@ -53,7 +53,32 @@ function shortcode_testimonial_submission ( $atts ) {
 
 	if( isset( $_POST['testimonial-postback'] ) ):
 	
-	
+		$post = array(
+			
+			'ID' => NULL,
+			'post_content' => apply_filters( 'the_content', $_POST['testimonial_description'] ),
+			'post_name' => '',
+			'post_type' => 'testimonial',
+			'post_status' => 'draft',
+			'post_title' => $_POST['testimonial_title']
+		
+		);
+		
+		if( $post_id = wp_insert_post( $post, false ) ) {
+		
+			update_post_meta( $post_id, 'testimonial_client_name', $_POST['testimonial_client_name'] );
+			update_post_meta( $post_id, 'testimonial_client_company_name', $_POST['testimonial_client_company_name'] );
+			update_post_meta( $post_id, 'testimonial_client_email', $_POST['testimonial_client_email'] );
+			update_post_meta( $post_id, 'testimonial_client_company_website', $_POST['testimonial_client_company_website'] );
+			
+			echo '<p>We successfully received your testimonial. If approved, it will appear on our website. Thank you!</p>';						
+		
+		}
+		else {
+		
+			echo '<p class="error">Sorry, but there was a problem with submitting your testimonial. Please try again.</p>';
+		
+		}
 	
 	else:
 	?>
