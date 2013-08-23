@@ -1,6 +1,6 @@
 <?php
 /*
-Helper functions for Simple Testimonials
+Helper functions for Clean Testimonials
 */
 
 function the_client () {
