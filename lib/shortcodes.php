@@ -85,22 +85,22 @@ function shortcode_testimonial_submission ( $atts ) {
 	
 	<form id="add-testimonial" name="add-testimonial" method="POST" action="<?php the_permalink(); ?>">
 	
-		<label for="title">Testimonial Title (eg, &quot;I'm so super happy!&quot;)</label><br />
+		<label for="testimonial_title">Testimonial Title (eg, &quot;I'm so super happy!&quot;)</label><br />
 		<input type="text" name="testimonial_title" required="required"/><br />
 		
-		<label for="testimonial">Your Testimonial (be as descriptive as you like here!)</label><br />
+		<label for="testimonial_description">Your Testimonial (be as descriptive as you like here!)</label><br />
 		<textarea name="testimonial_description" rows="10" cols="20" required="required"></textarea><br />
 		
-		<label for="name">Your Name</label><br />
+		<label for="testimonial_client_name">Your Name</label><br />
 		<input type="text" name="testimonial_client_name" required="required"/><br />
 		
-		<label for="name">Company Name <em>(optional)</em></label><br />
+		<label for="testimonial_client_company_name">Company Name <em>(optional)</em></label><br />
 		<input type="text" name="testimonial_client_company_name" /><br />
 		
-		<label for="name">Your Email <em>(optional)</em></label><br />
+		<label for="testimonial_client_email">Your Email <em>(optional)</em></label><br />
 		<input type="text" name="testimonial_client_email" /><br />
 		
-		<label for="name">Your Website <em>(optional)</em></label><br />
+		<label for="testimonial_client_company_website">Your Website <em>(optional)</em></label><br />
 		<input type="text" name="testimonial_client_company_website" /><br />
 		
 		<!-- hidden postback test field -->
