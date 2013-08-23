@@ -51,6 +51,11 @@ add_shortcode( 'testimonials', 'shortcode_testimonials' );
 // This shortcode outputs a form which visitors can use to submit a testimonial
 function shortcode_testimonial_submission ( $atts ) {
 
+	if( isset( $_POST['testimonial-postback'] ) ):
+	
+	
+	
+	else:
 	?>
 	
 	<form id="add-testimonial" name="add-testimonial" method="POST" action="<?php the_permalink(); ?>">
@@ -81,7 +86,9 @@ function shortcode_testimonial_submission ( $atts ) {
 	</form>
 	
 	<?php
-
+	
+	endif;
+	
 }
 add_shortcode( 'testimonial-submission-form', 'shortcode_testimonial_submission' );
 
