@@ -62,6 +62,7 @@ function shortcode_testimonial_submission ( $atts ) {
 			
 		}
 		
+		// Build post array object
 		$post = array(
 			
 			'ID' => NULL,
@@ -73,6 +74,7 @@ function shortcode_testimonial_submission ( $atts ) {
 		
 		);
 		
+		// Insert new testimonial, if successful, update meta data
 		if( $post_id = wp_insert_post( $post, false ) ) {
 		
 			update_post_meta( $post_id, 'testimonial_client_name', $_POST['testimonial_client_name'] );
