@@ -61,10 +61,10 @@ function shortcode_testimonial_submission ( $atts ) {
 	<form id="add-testimonial" name="add-testimonial" method="POST" action="<?php the_permalink(); ?>">
 	
 		<label for="title">Testimonial Title (eg, &quot;I'm so super happy!&quot;)</label><br />
-		<input type="text" name="title" required="required"/><br />
+		<input type="text" name="testimonial_title" required="required"/><br />
 		
 		<label for="testimonial">Your Testimonial (be as descriptive as you like here!)</label><br />
-		<textarea name="testimonial" rows="10" cols="20" required="required"></textarea><br />
+		<textarea name="testimonial_description" rows="10" cols="20" required="required"></textarea><br />
 		
 		<label for="name">Your Name</label><br />
 		<input type="text" name="testimonial_client_name" required="required"/><br />
