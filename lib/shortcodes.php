@@ -97,7 +97,7 @@ function shortcode_testimonial_submission ( $atts ) {
 		$post = array(
 			
 			'ID' => NULL,
-			'post_content' => apply_filters( 'the_content', $_POST['testimonial_description'] ),
+			'post_content' => apply_filters( 'the_content', esc_textarea( $_POST['testimonial_description'] ) ),
 			'post_name' => '',
 			'post_type' => 'testimonial',
 			'post_status' => 'draft',
@@ -108,11 +108,11 @@ function shortcode_testimonial_submission ( $atts ) {
 		// Insert new testimonial, if successful, update meta data
 		if( $post_id = wp_insert_post( $post, false ) ) {
 		
-			update_post_meta( $post_id, 'testimonial_client_name', $_POST['testimonial_client_name'] );
-			update_post_meta( $post_id, 'testimonial_client_company_name', $_POST['testimonial_client_company_name'] );
-			update_post_meta( $post_id, 'testimonial_client_email', $_POST['testimonial_client_email'] );
-			update_post_meta( $post_id, 'testimonial_client_company_website', $_POST['testimonial_client_company_website'] );
-			update_post_meta( $post_id, 'testimonial_client_permission', $_POST['permission'] == '' ? 'no' : $_POST['permission'] );
+			update_post_meta( $post_id, 'testimonial_client_name', sanitize_text_field( $_POST['testimonial_client_name'] ) );
+			update_post_meta( $post_id, 'testimonial_client_company_name', sanitize_text_field( $_POST['testimonial_client_company_name'] ) );
+			update_post_meta( $post_id, 'testimonial_client_email', sanitize_email( $_POST['testimonial_client_email'] ) );
+			update_post_meta( $post_id, 'testimonial_client_company_website', esc_url( $_POST['testimonial_client_company_website'] ) );
+			update_post_meta( $post_id, 'testimonial_client_permission', $_POST['permission'] == '' ? 'no' : sanitize_text_field( $_POST['permission'] ) );
 			
 			// If thumbnail has been uploaded, assign as thumbnail
 			if( !empty( $_FILES['thumbnail']['tmp_name'] ) )
