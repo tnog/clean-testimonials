@@ -49,8 +49,23 @@ function shortcode_testimonials ( $atts ) {
 			
 			}
 			
-			if( function_exists( 'wp_paginate' ) )
+			if( function_exists( 'wp_paginate' ) ) {
+			
 				wp_paginate();
+				
+			}
+			else {
+			
+				global $wp_query;
+				
+				echo paginate_links( array(
+					'base' => str_replace( 99999999, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+					'format' => '?paged=%#%',
+					'current' => max( 1, get_query_var('paged') ),
+					'total' => $wp_query->max_num_pages
+				) );
+			
+			}
 		
 			echo '</div>';
 		
