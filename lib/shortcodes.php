@@ -22,7 +22,8 @@ function shortcode_testimonials ( $atts ) {
 
 	$args = array(
 	
-		'numberposts' => -1,
+		'posts_per_page' => 2,
+		'paged' => get_query_var( 'paged' ),
 		'post_type' => 'testimonial',
 	);
 	
@@ -33,16 +34,29 @@ function shortcode_testimonials ( $atts ) {
 	
 	}
 	
-	if( $testimonials = get_posts( $args ) ) {
-	
-		echo '<div class="testimonial-category">';
-		foreach( $testimonials as &$testimonial ) {
+	if( query_posts( $args ) ) {
+
+		if( have_posts() ) {
 		
-			$testimonial = new WP_Testimonial( $testimonial->ID );
-			$testimonial->render();
+			echo '<div class="testimonial-category">';
+			
+			while( have_posts( ) ) {
+			
+				the_post();
+				
+				$testimonial = new WP_Testimonial( get_the_ID() );
+				$testimonial->render();
+			
+			}
+			
+			if( function_exists( 'wp_paginate' ) )
+				wp_paginate();
 		
-		}	
-		echo '</div>';
+			echo '</div>';
+		
+		}
+		
+		wp_reset_query();
 		
 	}
 
