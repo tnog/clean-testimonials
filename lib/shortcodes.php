@@ -20,18 +20,18 @@ add_shortcode( 'testimonial', 'shortcode_testimonial' );
 // This shortcode is used to output multiple testimonials from a testimonial_category term
 function shortcode_testimonials ( $atts ) {
 
-	if( !isset( $atts['category'] ) )
-		return;
-		
-	$category = get_term_by( 'id', $atts['category'], 'testimonial_category' );
-	
 	$args = array(
 	
 		'numberposts' => -1,
 		'post_type' => 'testimonial',
-		'testimonial_category' => $category->slug
-	
 	);
+	
+	if( isset( $atts['category'] ) ) {
+		
+		$category = get_term_by( 'id', $atts['category'], 'testimonial_category' );	
+		$args['testimonial_category'] = $category->slug;
+	
+	}
 	
 	if( $testimonials = get_posts( $args ) ) {
 	
