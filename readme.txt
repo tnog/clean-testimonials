@@ -19,7 +19,7 @@ There are a few simple ways to manage your testimonials:
 1. Easy to use shortcodes when editing content in the WordPress admin area.
 2. PHP code if you are a developer (see FAQ).
 
-This plugin is in constant development. If you have any feature requests or questions, please feel free to submit them via this plugins support forum
+This plugin is in constant development. If you have any feature requests or questions, please feel free to submit them via the support forum.
 
 = Features =
 
