@@ -82,7 +82,7 @@ add_shortcode( 'testimonials', 'shortcode_testimonials' );
 // This shortcode outputs a form which visitors can use to submit a testimonial
 function shortcode_testimonial_submission ( $atts ) {
 
-	if( isset( $_POST['testimonial-postback'] ) ):
+	if( isset( $_POST['testimonial-postback'] ) && wp_verify_nonce( $_POST['testimonial_nonce'], 'add-testimonial' ) ):
 	
 		// Require WordPress core functions we require for file upload
 		if( !function_exists( 'media_handle_upload' ) ) {
@@ -179,8 +179,9 @@ function shortcode_testimonial_submission ( $atts ) {
 		<input type="radio" name="permission" value="no" required="required" />&nbsp;No<br />
 		<input type="radio" name="permission" value="yes" required="required" />&nbsp;Yes<br />
 		
-		<!-- hidden postback test field -->
+		<!-- hidden postback test field and nonce -->
 		<input type="hidden" name="testimonial-postback" value="true" />
+		<input type="hidden" name="testimonial_nonce" value="<?php echo wp_create_nonce( 'add-testimonial' ); ?>" />
 		
 		<input type="submit" id="submit-testimonial" value="Submit Testimonial" />
 	
