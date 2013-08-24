@@ -8,7 +8,7 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily add Testimonials to your WordPress website. Simple, easy and clean.
+Add Testimonials to your WordPress website. Simple, easy, quick and clean.
 
 == Description ==
 
