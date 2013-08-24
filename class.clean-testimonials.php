@@ -86,6 +86,9 @@ final class Plugify_Clean_Testimonials {
 				'rewrite' => array( 'slug' => 'testimonials' )
 			)
 		);
+		
+		// Ensure jQuery is enqueued
+		wp_enqueue_script( 'jquery' );
 	
 	}
 	

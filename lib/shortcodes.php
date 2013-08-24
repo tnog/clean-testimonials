@@ -135,6 +135,8 @@ function shortcode_testimonial_submission ( $atts ) {
 	else:
 	?>
 	
+	<script src="<?php echo plugins_url( 'assets/js/validation.js', dirname( __FILE__ ) ); ?>"></script>
+	
 	<form id="add-testimonial" enctype="multipart/form-data" name="add-testimonial" method="POST" action="<?php the_permalink(); ?>">
 	
 		<label for="testimonial_title">Testimonial Title (eg, &quot;I'm so super happy!&quot;)</label><br />
@@ -159,19 +161,19 @@ function shortcode_testimonial_submission ( $atts ) {
 		</select><br />
 		
 		<label for="testimonial_client_name">Your Name</label><br />
-		<input type="text" name="testimonial_client_name" required="required"/><br />
+		<input type="text" name="testimonial_client_name" id="testimonial_client_name" required="required"/><br />
 		
 		<label for="testimonial_client_company_name">Company Name <em>(optional)</em></label><br />
-		<input type="text" name="testimonial_client_company_name" /><br />
+		<input type="text" name="testimonial_client_company_name" id="testimonial_client_company_name" /><br />
 		
 		<label for="testimonial_client_email">Your Email <em>(optional)</em></label><br />
-		<input type="text" name="testimonial_client_email" /><br />
+		<input type="text" name="testimonial_client_email" id="testimonial_client_email" /><br />
 		
 		<label for="testimonial_client_company_website">Your Website <em>(optional)</em></label><br />
-		<input type="text" name="testimonial_client_company_website" /><br />
+		<input type="text" name="testimonial_client_company_website" id="testimonial_client_company_website" /><br />
 		
 		<label for="thumbnail">Thumbnail <em>(optional)</em></label><br />
-		<input type="file" name="thumbnail" /><br />
+		<input type="file" name="thumbnail" id="thumbnail" /><br />
 		
 		<label for="permission">Can we display your contact details? (EG, email and website)?</label><br />
 		<input type="radio" name="permission" value="no" required="required" />&nbsp;No<br />
