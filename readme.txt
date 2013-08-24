@@ -19,6 +19,8 @@ There are a few simple ways to manage your testimonials:
 1. Easy to use shortcodes when editing content in the WordPress admin area.
 2. PHP code if you are a developer (see FAQ).
 
+This plugin is in constant development. If you have any feature requests or questions, please feel free to submit them via this plugins support forum
+
 = Features =
 
 * Creates a "Testimonials" link in your WordPress admin area which allows you or your visitors to submit Testimonials.
@@ -63,6 +65,13 @@ You can copy and paste this shortcode complete with ID from the Testimonials -> 
 = Can I display a random testimonial? =
 
 Not currently.
+
+= I am a developer, what can you tell me? =
+
+The following information might be handy for you to know.
+
+1. Testimonials operate via a custom post type which is simply named "testimonial".
+2. Testimonials are grouped in a custom taxonomy named "testimonial_category".
 
 == Screenshots ==
 
