@@ -17,8 +17,7 @@ Clean Testimonials enables you to easily and quickly add Testimonials to your Wo
 There are a few simple ways to manage your testimonials:
 
 1. Easy to use shortcodes when editing content in the WordPress admin area.
-2. The Testimonials Widget which is built right in to the plugin.
-3. PHP code if you are a developer (see FAQ).
+2. PHP code if you are a developer (see FAQ).
 
 = Features =
 
