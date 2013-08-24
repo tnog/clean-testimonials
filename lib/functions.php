@@ -59,4 +59,10 @@ function get_the_website ( $testimonial_id ) {
 
 }
 
+function testimonial_has_permission( $testimonial_id ) {
+
+	return get_post_meta( $testimonial_id, 'testimonial_client_permission', true ) == 'yes';
+
+}
+
 ?>

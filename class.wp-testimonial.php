@@ -42,7 +42,15 @@ final class WP_Testimonial {
 				<?php echo $this->post_content; ?>
 			</blockquote>
 			
-			<h5><?php echo $this->client; ?>,<br /><?php echo $this->company; ?></h5>
+			<h5>
+				
+				<?php echo $this->client; ?>,<br /><?php echo $this->company; ?>
+				
+				<?php if( testimonial_has_permission( $this->ID ) ): ?>
+				<?php echo sprintf( '<br />Web: <a href="%s">%s</a>,<br />Email: <a href="mailto:%s">%s</a>', $this->website, $this->website, $this->email, $this->email ); ?>
+				<?php endif; ?>
+				
+			</h5>
 		
 		</div>
 		
