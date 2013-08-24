@@ -84,9 +84,14 @@ function shortcode_testimonial_submission ( $atts ) {
 			update_post_meta( $post_id, 'testimonial_client_email', $_POST['testimonial_client_email'] );
 			update_post_meta( $post_id, 'testimonial_client_company_website', $_POST['testimonial_client_company_website'] );
 			
+			// If thumbnail has been uploaded, assign as thumbnail
 			if( !empty( $_FILES['thumbnail']['tmp_name'] ) )
 				if( $attachment_id = media_handle_upload( 'thumbnail', $post_id ) )
 					update_post_meta( $post_id, '_thumbnail_id', $attachment_id );
+			
+			// If a category has been selected, update the object term
+			if( '' != $_POST['testimonial_category_group'] )
+				wp_set_object_terms( $post_id, $_POST['testimonial_category_group'], 'testimonial_category' );
 			
 			echo '<p>We successfully received your testimonial. If approved, it will appear on our website. Thank you!</p>';						
 		
@@ -107,6 +112,21 @@ function shortcode_testimonial_submission ( $atts ) {
 		
 		<label for="testimonial_description">Your Testimonial (be as descriptive as you like here!)</label><br />
 		<textarea name="testimonial_description" rows="10" cols="20" required="required"></textarea><br />
+		
+		<label for="testimonial_category_group">Category (optional)</label><br />
+		<select name="testimonial_category_group">
+		
+			<option value="">None</option>
+			
+			<?php if( $terms = get_terms( 'testimonial_category', array( 'hide_empty' => false ) ) ): ?>
+			
+				<?php foreach( $terms as $term ): ?>
+				<option value="<?php echo $term->slug; ?>"><?php echo $term->name; ?></option>
+				<?php endforeach; ?>
+			
+			<?php endif; ?>
+		
+		</select><br />
 		
 		<label for="testimonial_client_name">Your Name</label><br />
 		<input type="text" name="testimonial_client_name" required="required"/><br />
