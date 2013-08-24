@@ -39,7 +39,14 @@ final class WP_Testimonial {
 			<h3><?php echo $this->post_title; ?></h3>
 			
 			<blockquote>
+				
+				<?php if( has_post_thumbnail( $this->ID ) ): $image = wp_get_attachment_image_src( get_post_thumbnail_id( $this->ID ), array( 200, 200 ) ); ?>
+				<img style="float: left; padding: 10px;" src="<?php echo $image[0]; ?>" width="<?php echo $image[1]; ?>" height="<?php echo $image[2]; ?>" />
+				<?php endif; ?>
+				
 				<?php echo $this->post_content; ?>
+				
+				
 			</blockquote>
 			
 			<h5>
