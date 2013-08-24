@@ -25,8 +25,8 @@ There are a few simple ways to manage your testimonials:
 * Creates a "Testimonials" link in your WordPress admin area which allows you or your visitors to submit Testimonials.
 * Leverages the simplicity of WordPress shortcodes, allowing you to easily display your Testimonials wherever you like (see FAQ for individual shortcodes).
 * Categorize Testimonials any way you see fit and display those categories wherever you like.
-* Add images to testimonials.
-* Allow your visitors to choose whether their contact details are displayed with their testimonials.
+* Allows your visitors to upload a thumbnail with their testimonial
+* Allows your visitors to choose whether their contact details are displayed with their testimonials.
 * Allows powerful customizations for developers.
 * Supports **WP-Paginate** if installed.
 
