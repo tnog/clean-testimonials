@@ -12,12 +12,29 @@ final class Testimonials_Widget extends WP_Widget {
 	
 	function widget ( $args, $instance ) {
 	
+		$args = array(
+		
+			'post_type' => 'testimonial',
+			'numberposts' => 1
+		
+		);
+		
+		if( is_numeric( $instance['testimonial_id'] ) )
+			$args['include'] = $instance['testimonial_id'];
+		else
+			$args['orderby'] = 'rand';
+			
+		if( $testimonials = get_posts( $args ) )
+			foreach( $testimonials as $testimonial )
+				$testimonial = new WP_Testimonial( $testimonial->ID );
+				
+		$testimonial->render();
 	
 	}
 	
 	function update ( $new_instance, $old_instance ) {
 		
-		$instance = array( 'testimonial_id' => 'random' );
+		$instance = $old_instance;
 		
 		if( !empty( $new_instance['testimonial_id'] ) )
 			$instance['testimonial_id'] = $new_instance['testimonial_id'];
@@ -28,18 +45,26 @@ final class Testimonials_Widget extends WP_Widget {
 	
 	function form ( $instance ) {
 
+		$defaults = array(
+		
+			'testimonial_id' => 'random'
+		
+		);
+		
+		$instance = wp_parse_args( (array)$instance, $defaults );
+
 		?>
 		
 		<p>Select a Testimonial to display</p>
 		
-		<select name="testimonial_id" style="width:100%;">
+		<select name="<?php echo $this->get_field_name( 'testimonial_id' ); ?>" style="width:100%;">
 		
-			<option value="random">Random</option>	
+			<option value="random">Random</option>
 		
 			<?php if( $testimonials = get_posts( array( 'post_type' => 'testimonial', 'numberposts' => -1 ) ) ) :?>
 			
 			<?php foreach( $testimonials as $testimonial ): ?>
-			<option value="<?php echo $testimonial->ID; ?>"<?php echo ( $instance['testimonial_id'] == $testimonial->ID ? ' selected="selected"' : NULL ); ?>><?php echo $testimonial->post_title; ?></option>
+			<option value="<?php echo esc_attr( $testimonial->ID ); ?>"<?php echo ( $instance['testimonial_id'] == $testimonial->ID ? ' selected="selected"' : NULL ); ?>><?php echo $testimonial->post_title; ?></option>
 			<?php endforeach; ?>
 			
 			<?php endif; ?>
