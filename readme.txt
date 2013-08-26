@@ -28,6 +28,7 @@ This plugin is in constant development. If you have any feature requests or ques
 * Leverages the simplicity of WordPress shortcodes, allowing you to easily display your Testimonials wherever you like (see FAQ for individual shortcodes).
 * Categorize Testimonials any way you see fit and display those categories wherever you like.
 * Creates a Testimonial Widget which allows you to display your testimonials in sidebar or widgetized areas.
+* Display random testimonials using either a shortcode or the built-in widget.
 * Allows your visitors to upload a thumbnail with their testimonial.
 * Allows your visitors to choose whether their contact details are displayed with their testimonials.
 * Allows powerful customizations for developers.
