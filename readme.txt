@@ -17,7 +17,7 @@ Clean Testimonials enables you to easily and quickly add Testimonials to your Wo
 There are a few simple ways to manage your testimonials:
 
 1. Easy to use shortcodes when editing content in the WordPress admin area.
-2. Via the built-in Testimonial Widget
+2. The built-in Testimonial Widget to display a specific or random testimonial
 3. PHP code if you are a developer (see FAQ).
 
 This plugin is in constant development. If you have any feature requests or questions, please feel free to submit them via the support forum.
@@ -68,7 +68,7 @@ You can copy and paste this shortcode complete with ID from the Testimonials -> 
 
 = Can I display a random testimonial? =
 
-Not currently.
+Yes, you can use the Testimonial Widget and specify the "random" option, or you can use the [testimonial id="random"] shortcode.
 
 = I am a developer, what can you tell me? =
 
