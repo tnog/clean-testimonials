@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hello
 Tags: testimonials,testimonial
 Requires at least: 2.5
 Tested up to: 3.6
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,8 @@ Clean Testimonials enables you to easily and quickly add Testimonials to your Wo
 There are a few simple ways to manage your testimonials:
 
 1. Easy to use shortcodes when editing content in the WordPress admin area.
-2. PHP code if you are a developer (see FAQ).
+2. The built-in Testimonial Widget to display a specific or random testimonial
+3. PHP code if you are a developer (see FAQ).
 
 This plugin is in constant development. If you have any feature requests or questions, please feel free to submit them via the support forum.
 
@@ -26,7 +27,9 @@ This plugin is in constant development. If you have any feature requests or ques
 * Creates a "Testimonials" link in your WordPress admin area which allows you or your visitors to submit Testimonials.
 * Leverages the simplicity of WordPress shortcodes, allowing you to easily display your Testimonials wherever you like (see FAQ for individual shortcodes).
 * Categorize Testimonials any way you see fit and display those categories wherever you like.
-* Allows your visitors to upload a thumbnail with their testimonial
+* Creates a Testimonial Widget which allows you to display your testimonials in sidebar or widgetized areas.
+* Display random testimonials using either a shortcode or the built-in widget.
+* Allows your visitors to upload a thumbnail with their testimonial.
 * Allows your visitors to choose whether their contact details are displayed with their testimonials.
 * Allows powerful customizations for developers.
 * Supports **WP-Paginate** if installed.
@@ -34,6 +37,8 @@ This plugin is in constant development. If you have any feature requests or ques
 **Please Note:** Although any output Clean Testimonials generates is well structured, no styling is shipped out of the box. This means it is up to your theme to decide how the output will be styled.
 
 If you have found this plugin useful, consider taking a moment to rate it, or perhaps even a small donation.
+
+**Want to contribute to Clean Testimonials?** Fork Clean Testimonials on Github at http://github.com/lukerollans/clean-testimonials
 
 == Installation ==
 
@@ -64,7 +69,7 @@ You can copy and paste this shortcode complete with ID from the Testimonials -> 
 
 = Can I display a random testimonial? =
 
-Not currently.
+Yes, you can use the Testimonial Widget and specify the "random" option, or you can use the [testimonial id="random"] shortcode.
 
 = I am a developer, what can you tell me? =
 
@@ -72,6 +77,7 @@ The following information might be handy for you to know.
 
 1. Testimonials operate via a custom post type which is simply named "testimonial".
 2. Testimonials are grouped in a custom taxonomy named "testimonial_category".
+3. The Testimonial widget class name is "Testimonial_Widget" and of course extends WP_Widget.
 
 == Screenshots ==
 
@@ -82,6 +88,12 @@ The following information might be handy for you to know.
 5. Example use of the [testimonial-submission-form] shortcode. This shortcode will turn this page into a Testimonial submission page for your users
 
 == Changelog ==
+
+= 1.2.2 =
+* Added Testimonial Widget
+
+= 1.2 =
+* Enhancements and bug fixes
 
 = 1.0 =
 * Initial release of plugin
