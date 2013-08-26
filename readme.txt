@@ -17,7 +17,8 @@ Clean Testimonials enables you to easily and quickly add Testimonials to your Wo
 There are a few simple ways to manage your testimonials:
 
 1. Easy to use shortcodes when editing content in the WordPress admin area.
-2. PHP code if you are a developer (see FAQ).
+2. Via the built-in Testimonial Widget
+3. PHP code if you are a developer (see FAQ).
 
 This plugin is in constant development. If you have any feature requests or questions, please feel free to submit them via the support forum.
 
@@ -26,7 +27,8 @@ This plugin is in constant development. If you have any feature requests or ques
 * Creates a "Testimonials" link in your WordPress admin area which allows you or your visitors to submit Testimonials.
 * Leverages the simplicity of WordPress shortcodes, allowing you to easily display your Testimonials wherever you like (see FAQ for individual shortcodes).
 * Categorize Testimonials any way you see fit and display those categories wherever you like.
-* Allows your visitors to upload a thumbnail with their testimonial
+* Creates a Testimonial Widget which allows you to display your testimonials in sidebar or widgetized areas.
+* Allows your visitors to upload a thumbnail with their testimonial.
 * Allows your visitors to choose whether their contact details are displayed with their testimonials.
 * Allows powerful customizations for developers.
 * Supports **WP-Paginate** if installed.
@@ -82,6 +84,12 @@ The following information might be handy for you to know.
 5. Example use of the [testimonial-submission-form] shortcode. This shortcode will turn this page into a Testimonial submission page for your users
 
 == Changelog ==
+
+= 1.2.2 =
+* Added Testimonial Widget
+
+= 1.2 =
+* Enhancements and bug fixes
 
 = 1.0 =
 * Initial release of plugin
