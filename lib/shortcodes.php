@@ -9,9 +9,26 @@ function shortcode_testimonial ( $atts ) {
 	
 	if( !isset( $atts['id'] ) )
 		return;
+	
+	$args = array(
+	
+		'post_type' => 'testimonial',
+		'numberposts' => 1
+	
+	);
+	
+	if( is_numeric( $atts['id'] ) )
+		$args['include'] = $atts['id'];
+	elseif( $atts['id'] == 'random' )
+		$args['orderby'] = 'rand';
 		
-	$testimonial = new WP_Testimonial( $atts['id'] );
-	$testimonial->render();
+	if( $testimonials = get_posts( $args ) )
+		foreach( $testimonials as $testimonial ) {
+		
+			$testimonial = new WP_Testimonial( $testimonial->ID );
+			$testimonial->render();
+		
+		}
 
 }
 add_shortcode( 'testimonial', 'shortcode_testimonial' );
