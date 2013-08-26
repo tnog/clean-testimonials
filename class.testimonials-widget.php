@@ -17,10 +17,13 @@ final class Testimonials_Widget extends WP_Widget {
 	
 	function update ( $new_instance, $old_instance ) {
 	
+		
+	
 	}
 	
 	function form ( $instance ) {
 	
+		
 	
 	}
 	

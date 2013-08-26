@@ -9,7 +9,7 @@ final class Plugify_Clean_Testimonials {
 		// Register actions
 		add_action( 'init', array( __CLASS__, 'init' ) );
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
-		add_action( 'widgets_init', array( __CLASS__, 'widgets_init' ) );
+		// add_action( 'widgets_init', array( __CLASS__, 'widgets_init' ) );
 		add_action( 'wp_insert_post', array( __CLASS__, 'insert_testimonial' ), 10, 1 );
 		add_action( 'manage_posts_custom_column', array( __CLASS__, 'testimonial_column' ), 10, 2 );
 		
