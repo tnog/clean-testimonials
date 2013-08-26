@@ -4,7 +4,7 @@ Plugin Name: Clean Testimonials
 Plugin URI: http://www.plugify.com.au/plugin/simple-testimonials
 Description: Allows you to easily and quickly add Testimonials to your WordPress website
 Author: Luke Rollans
-Version: 1.0
+Version: 1.1
 Author URI: http://www.lukerollans.me
 */
 
