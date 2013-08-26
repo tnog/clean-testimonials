@@ -90,7 +90,9 @@ The following information might be handy for you to know.
 == Changelog ==
 
 = 1.2.2 =
+* Fixed bug causing Featured Images (thumbnails) to not appear on the Testimonial edit page
 * Added Testimonial Widget
+* Changed [testimonial] shortcode to accept "random" as an ID which, in turn, outputs a random testimonial
 
 = 1.2 =
 * Enhancements and bug fixes
