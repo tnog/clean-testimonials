@@ -56,7 +56,7 @@ final class Plugify_Clean_Testimonials {
 				 'hierarchical' => false,
 				 'rewrite' => array( 'slug' => 'testimonial' ),
 				 'query_var' => 'testimonial',
-				 'supports' => array( 'title', 'editor' ),
+				 'supports' => array( 'title', 'editor', 'thumbnail' ),
 				 'menu_position' => 5
 			)
 		);
