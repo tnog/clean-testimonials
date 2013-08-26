@@ -37,6 +37,8 @@ This plugin is in constant development. If you have any feature requests or ques
 
 If you have found this plugin useful, consider taking a moment to rate it, or perhaps even a small donation.
 
+**Want to contribute to Clean Testimonials?** Fork Clean Testimonials on Github at http://github.com/lukerollans/clean-testimonials
+
 == Installation ==
 
 1. Upload the `clean-testimonials` folder to the `/wp-content/plugins/` directory
