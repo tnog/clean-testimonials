@@ -75,11 +75,11 @@ The following information might be handy for you to know.
 
 == Screenshots ==
 
-1. Screenshot 1
-2. Screenshot 2
-3. Screenshot 3
-4. Screenshot 4
-5. Screenshot 5
+1. An overview of the Testimonials menu
+2. Editing or creating a Testimonial in the backend
+3. Managing Testimonial categories
+4. Example use of the [testimonials] shortcode. This will display all testimonials with pagination
+5. Example use of the [testimonial-submission-form] shortcode. This shortcode will turn this page into a Testimonial submission page for your users
 
 == Changelog ==
 
