@@ -74,6 +74,7 @@ The following information might be handy for you to know.
 
 1. Testimonials operate via a custom post type which is simply named "testimonial".
 2. Testimonials are grouped in a custom taxonomy named "testimonial_category".
+3. The Testimonial widget class name is "Testimonial_Widget" and of course extends WP_Widget.
 
 == Screenshots ==
 
