@@ -8,6 +8,10 @@ Version: 1.2.3
 Author URI: http://www.lukerollans.me
 */
 
+// Ensure WordPress has been bootstrapped
+if( !defined( 'ABSPATH' ) )
+	exit;
+
 $path = trailingslashit( dirname( __FILE__ ) );
 
 // Ensure our class dependencies class has been defined
