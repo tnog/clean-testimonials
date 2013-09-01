@@ -199,22 +199,22 @@ final class Plugify_Clean_Testimonials {
 		
 			<tr>
 				<td valign="middle" align="left" width="125"><label for="testimonial_client_name">Client Name</label></td>
-				<td valign="middle" align="left" width="150"><input type="text" name="testimonial_client_name" value="<?php echo get_post_meta( $post->ID, 'testimonial_client_name', true ); ?>" />
+				<td valign="middle" align="left" width="150"><input type="text" name="testimonial_client_name" value="<?php echo esc_attr( get_post_meta( $post->ID, 'testimonial_client_name', true ) ); ?>" />
 				<td valign="middle" align="left"><em>The name of the client giving this testimonial</em></td>
 			</tr>
 			<tr>
 				<td valign="middle" align="left"><label for="testimonial_client_company_name">Company Name</label></td>
-				<td valign="middle" align="left"><input type="text" name="testimonial_client_company_name" value="<?php echo get_post_meta( $post->ID, 'testimonial_client_company_name', true ); ?>" />
+				<td valign="middle" align="left"><input type="text" name="testimonial_client_company_name" value="<?php echo esc_attr( get_post_meta( $post->ID, 'testimonial_client_company_name', true ) ); ?>" />
 				<td valign="middle" align="left"><em>The company which this client represents</em></td>
 			</tr>
 			<tr>
 				<td valign="middle" align="left"><label for="testimonial_client_email">Email</label></td>
-				<td valign="middle" align="left"><input type="text" name="testimonial_client_email" value="<?php echo get_post_meta( $post->ID, 'testimonial_client_email', true ); ?>" />
+				<td valign="middle" align="left"><input type="text" name="testimonial_client_email" value="<?php echo esc_attr( get_post_meta( $post->ID, 'testimonial_client_email', true ) ); ?>" />
 				<td valign="middle" align="left"><em>Contact email address of whom is giving the testimonial</em></td>
 			</tr>
 			<tr>
 				<td valign="middle" align="left"><label for="testimonial_client_website">Website</label></td>
-				<td valign="middle" align="left"><input type="text" name="testimonial_client_company_website" value="<?php echo get_post_meta( $post->ID, 'testimonial_client_company_website', true ); ?>" />
+				<td valign="middle" align="left"><input type="text" name="testimonial_client_company_website" value="<?php echo esc_attr( get_post_meta( $post->ID, 'testimonial_client_company_website', true ) ); ?>" />
 				<td valign="middle" align="left"><em>Website of whom is giving the testimonial</em></td>
 			</tr>
 		
@@ -236,7 +236,7 @@ final class Plugify_Clean_Testimonials {
 		
 		foreach( $_POST as $key => $value )
 			if( strpos( $key, 'testimonial_' ) === 0 )
-				update_post_meta( $post_id, $key, $value );
+				update_post_meta( $post_id, $key, sanitize_text_field( $value ) );
 	
 	}
 
