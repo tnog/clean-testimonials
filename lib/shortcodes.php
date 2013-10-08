@@ -22,13 +22,24 @@ function shortcode_testimonial ( $atts ) {
 	elseif( $atts['id'] == 'random' )
 		$args['orderby'] = 'rand';
 		
-	if( $testimonials = get_posts( $args ) )
+	if( $testimonials = get_posts( $args ) ) {
+	
+		$output = '';
+		ob_start();
+		
 		foreach( $testimonials as $testimonial ) {
 		
 			$testimonial = new WP_Testimonial( $testimonial->ID );
 			$testimonial->render();
 		
 		}
+		
+		$data = ob_get_contents();
+		ob_end_clean();
+		
+		return $data;
+		
+	}
 
 }
 add_shortcode( 'testimonial', 'shortcode_testimonial' );
