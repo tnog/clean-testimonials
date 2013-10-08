@@ -24,7 +24,6 @@ function shortcode_testimonial ( $atts ) {
 		
 	if( $testimonials = get_posts( $args ) ) {
 	
-		$output = '';
 		ob_start();
 		
 		foreach( $testimonials as $testimonial ) {
@@ -34,10 +33,10 @@ function shortcode_testimonial ( $atts ) {
 		
 		}
 		
-		$data = ob_get_contents();
+		$output = ob_get_contents();
 		ob_end_clean();
 		
-		return $data;
+		return $output;
 		
 	}
 
@@ -55,6 +54,8 @@ function shortcode_testimonials ( $atts ) {
 		'post_type' => 'testimonial',
 	);
 	
+	$output = '';
+	
 	if( isset( $atts['category'] ) ) {
 		
 		$category = get_term_by( 'id', $atts['category'], 'testimonial_category' );	
@@ -66,6 +67,8 @@ function shortcode_testimonials ( $atts ) {
 
 		if( have_posts() ) {
 		
+			ob_start();
+			
 			echo '<div class="testimonial-category">';
 			
 			while( have_posts( ) ) {
@@ -96,10 +99,15 @@ function shortcode_testimonials ( $atts ) {
 			}
 		
 			echo '</div>';
+			
+			$output = ob_get_contents();
+			ob_end_clean();
 		
 		}
 		
 		wp_reset_query();
+		
+		return $output;
 		
 	}
 
