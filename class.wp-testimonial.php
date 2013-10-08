@@ -58,6 +58,8 @@ final class WP_Testimonial {
 				<?php endif; ?>
 				
 			</h5>
+			
+			<br clear="all" />
 		
 		</div>
 		
