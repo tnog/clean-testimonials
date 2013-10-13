@@ -89,6 +89,10 @@ The following information might be handy for you to know.
 
 == Changelog ==
 
+= 1.2.5 =
+* Supressed comma output when displaying a testimonial if company name is not set
+* Added "random from category" option to testimonial widget
+
 = 1.2.4 =
 * Fixed output positioning of shortcode data
 
