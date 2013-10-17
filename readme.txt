@@ -90,8 +90,7 @@ The following information might be handy for you to know.
 == Changelog ==
 
 = 1.2.5 =
-* Supressed comma output when displaying a testimonial if company name is not set
-* Added "random from category" option to testimonial widget
+* When displaying a testimonial, the comma separating the client name and company name will no longer be displayed if the company name is not set
 
 = 1.2.4 =
 * Fixed output positioning of shortcode data
