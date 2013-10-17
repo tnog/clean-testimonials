@@ -51,7 +51,11 @@ final class WP_Testimonial {
 			
 			<h5>
 				
+				<?php if( !empty( $this->company ) ): ?>
 				<?php echo $this->client; ?>,<br /><?php echo $this->company; ?>
+				<?php else: ?>
+				<?php echo $this->client; ?>
+				<?php endif; ?>
 				
 				<?php if( testimonial_has_permission( $this->ID ) ): ?>
 				<?php echo sprintf( '<br />Web: <a href="%s">%s</a>,<br />Email: <a href="mailto:%s">%s</a>', $this->website, $this->website, $this->email, $this->email ); ?>
