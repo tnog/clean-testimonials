@@ -89,6 +89,10 @@ The following information might be handy for you to know.
 
 == Changelog ==
 
+= 1.2.6 =
+* Added "per_page" attribute to [testimonials] shortcode which allows you to specify how many testimonials to display per page. EG, [testimonials category="25" per_page="5]. Default is 2
+* Fixed small PHP warning which could be generated when testimonial pagination is rendered
+
 = 1.2.5 =
 * When displaying a testimonial, the comma separating the client name and company name will no longer be displayed if the company name is not set
 
