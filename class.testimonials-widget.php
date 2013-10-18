@@ -57,7 +57,7 @@ final class Testimonials_Widget extends WP_Widget {
 		
 		<p>Select a Testimonial to display</p>
 		
-		<select name="<?php echo $this->get_field_name( 'testimonial_id' ); ?>" style="width:100%;">
+		<select class="testimonial_widget_select" name="<?php echo $this->get_field_name( 'testimonial_id' ); ?>" style="width:100%;">
 		
 			<option value="random">Random</option>
 		
@@ -70,6 +70,26 @@ final class Testimonials_Widget extends WP_Widget {
 			<?php endif; ?>
 			
 		</select>
+		
+		<br /><br />
+		
+		<div class="testimonial_random_category">
+		
+			<p>Get random testimonial from category</p>
+			
+			<?php if( $categories = get_terms( 'testimonial_category', array( 'hide_empty' => false ) ) ): ?>
+			<select name="<?php echo $this->get_field_name( 'testimonial_random_category' ); ?>" style="width:100%;">
+			
+				<option value="any">Any</option>
+				
+				<?php foreach( $categories as $category ): ?>
+				<option value="<?php echo $category->slug; ?>"><?php echo $category->name; ?></option>
+				<?php endforeach; ?>
+			
+			</select>
+			<?php endif; ?>
+		
+		</div>
 		
 		<?php
 	
