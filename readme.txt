@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hello
 Tags: testimonials,testimonial,recommendation,recommend,testimony,reference,referral,widget,reviews,review
 Requires at least: 2.5
 Tested up to: 3.6
-Stable tag: 1.2.6
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,7 +89,8 @@ The following information might be handy for you to know.
 
 == Changelog ==
 
-= 1.2.6 =
+= 1.3 =
+* Modified testimonial widget to allow specifying a category if desired when the "random" option is chosen
 * Added "per_page" attribute to [testimonials] shortcode which allows you to specify how many testimonials to display per page. EG, [testimonials category="25" per_page="5]. Default is 2
 * Fixed small PHP warning which could be generated when testimonial pagination is rendered
 
