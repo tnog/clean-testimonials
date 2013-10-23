@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hello
 Tags: testimonials,testimonial,recommendation,recommend,testimony,reference,referral,widget,reviews,review
 Requires at least: 2.5
 Tested up to: 3.6
-Stable tag: 1.2.5
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,7 +55,7 @@ When a user submits a testimonial, it will default to "Draft" status. You will n
 
 = How do I display all of my testimonials? =
 
-To display all testimonials with pagination, use the [testimonials] shortcode
+To display all testimonials with pagination, use the [testimonials] shortcode.
 
 = How do I display a testimonial? =
 
@@ -70,6 +70,10 @@ You can copy and paste this shortcode complete with ID from the Testimonials -> 
 = Can I display a random testimonial? =
 
 Yes, you can use the Testimonial Widget and specify the "random" option, or you can use the [testimonial id="random"] shortcode.
+
+= Can I change the number of testimonials shown per page? =
+
+Yes. Specify the "per_page" attribute when using the [testimonials] shortcode. EG, [testimonials category="10" per_page="5"].
 
 = I am a developer, what can you tell me? =
 
@@ -88,6 +92,10 @@ The following information might be handy for you to know.
 5. Example use of the [testimonial-submission-form] shortcode. This shortcode will turn this page into a Testimonial submission page for your users
 
 == Changelog ==
+
+= 1.3 =
+* Added "per_page" attribute to [testimonials] shortcode which allows you to specify how many testimonials to display per page. EG, [testimonials category="25" per_page="5"]. Default is 2
+* Fixed small PHP warning which could be generated when testimonial pagination is rendered
 
 = 1.2.5 =
 * When displaying a testimonial, the comma separating the client name and company name will no longer be displayed if the company name is not set
