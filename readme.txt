@@ -90,8 +90,7 @@ The following information might be handy for you to know.
 == Changelog ==
 
 = 1.3 =
-* Modified testimonial widget to allow specifying a category if desired when the "random" option is chosen
-* Added "per_page" attribute to [testimonials] shortcode which allows you to specify how many testimonials to display per page. EG, [testimonials category="25" per_page="5]. Default is 2
+* Added "per_page" attribute to [testimonials] shortcode which allows you to specify how many testimonials to display per page. EG, [testimonials category="25" per_page="5"]. Default is 2
 * Fixed small PHP warning which could be generated when testimonial pagination is rendered
 
 = 1.2.5 =
