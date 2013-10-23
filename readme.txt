@@ -55,7 +55,7 @@ When a user submits a testimonial, it will default to "Draft" status. You will n
 
 = How do I display all of my testimonials? =
 
-To display all testimonials with pagination, use the [testimonials] shortcode
+To display all testimonials with pagination, use the [testimonials] shortcode.
 
 = How do I display a testimonial? =
 
@@ -70,6 +70,10 @@ You can copy and paste this shortcode complete with ID from the Testimonials -> 
 = Can I display a random testimonial? =
 
 Yes, you can use the Testimonial Widget and specify the "random" option, or you can use the [testimonial id="random"] shortcode.
+
+= Can I change the number of testimonials shown per page? =
+
+Yes. Specify the "per_page" attribute when using the [testimonials] shortcode. EG, [testimonials category="10" per_page="5"].
 
 = I am a developer, what can you tell me? =
 
