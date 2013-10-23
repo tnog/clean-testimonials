@@ -73,6 +73,7 @@ final class Testimonials_Widget extends WP_Widget {
 		
 		<br /><br />
 		
+		<!--
 		<div class="testimonial_random_category">
 		
 			<p>Get random testimonial from category</p>
@@ -89,7 +90,7 @@ final class Testimonials_Widget extends WP_Widget {
 			</select>
 			<?php endif; ?>
 		
-		</div>
+		</div>-->
 		
 		<?php
 	
