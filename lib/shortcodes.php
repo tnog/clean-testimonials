@@ -143,8 +143,20 @@ function shortcode_testimonial_submission ( $atts ) {
 		
 		);
 		
+		// Ensure CAPTCHA passed		
+		require_once( trailingslashit( dirname( __FILE__ ) ) . 'recaptchalib.php' );
+		
+		$captcha = recaptcha_check_answer(
+		
+			'6Letc-kSAAAAANmcKKUmmybcly0ma7LXXc5Llcmm',
+			$_SERVER['REMOTE_ADDR'],
+			$_POST['recaptcha_challenge_field'],
+			$_POST['recaptcha_response_field']
+			
+		)->is_valid;
+		
 		// Insert new testimonial, if successful, update meta data
-		if( $post_id = wp_insert_post( $post, false ) ) {
+		if( $post_id = wp_insert_post( $post, false ) && $captcha ) {
 		
 			update_post_meta( $post_id, 'testimonial_client_name', sanitize_text_field( $_POST['testimonial_client_name'] ) );
 			update_post_meta( $post_id, 'testimonial_client_company_name', sanitize_text_field( $_POST['testimonial_client_company_name'] ) );
@@ -166,7 +178,7 @@ function shortcode_testimonial_submission ( $atts ) {
 		}
 		else {
 		
-			echo '<p class="error">Sorry, but there was a problem with submitting your testimonial. Please try again.</p>';
+			echo '<p class="error">Sorry, but there was a problem with submitting your testimonial. Please ensure all required fields have been supplied and that you entered the CAPTCHA code correctly.</p>';
 		
 		}
 	
@@ -220,6 +232,14 @@ function shortcode_testimonial_submission ( $atts ) {
 		<!-- hidden postback test field and nonce -->
 		<input type="hidden" name="testimonial-postback" value="true" />
 		<input type="hidden" name="testimonial_nonce" value="<?php echo wp_create_nonce( 'add-testimonial' ); ?>" />
+		
+		<?php
+		
+		require_once( trailingslashit( dirname( __FILE__ ) ) . 'recaptchalib.php' );
+		
+		echo recaptcha_get_html('6Letc-kSAAAAAHOFnLaXa5lGfXLS9NN0InD0LsJP');
+		
+		?>
 		
 		<input type="submit" id="submit-testimonial" value="Submit Testimonial" />
 	
