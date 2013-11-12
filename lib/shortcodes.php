@@ -156,7 +156,7 @@ function shortcode_testimonial_submission ( $atts ) {
 		)->is_valid;
 		
 		// Insert new testimonial, if successful, update meta data
-		if( $post_id = wp_insert_post( $post, false ) && $captcha ) {
+		if( ( $post_id = wp_insert_post( $post, false ) ) && $captcha ) {
 		
 			update_post_meta( $post_id, 'testimonial_client_name', sanitize_text_field( $_POST['testimonial_client_name'] ) );
 			update_post_meta( $post_id, 'testimonial_client_company_name', sanitize_text_field( $_POST['testimonial_client_company_name'] ) );
