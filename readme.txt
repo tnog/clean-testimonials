@@ -12,6 +12,12 @@ Add Testimonials to your WordPress website. Simple, easy, quick and clean.
 
 == Description ==
 
+= Have a feature request? =
+Sweet! Feature requsts on Github: https://github.com/lukerollans/clean-testimonials/issues?labels=enhancement
+
+= Want to contribute? =
+Clean Testimonials on Github: http://github.com/lukerollans/clean-testimonials
+
 Clean Testimonials enables you to easily and quickly add Testimonials to your WordPress website. The plugin integrates seamlessly with your existing WordPress admin area, so you will feel right at home.
 
 There are a few simple ways to manage your testimonials:
@@ -37,8 +43,6 @@ This plugin is in constant development. If you have any feature requests or ques
 **Please Note:** Although any output Clean Testimonials generates is well structured, no styling is shipped out of the box. This means it is up to your theme to decide how the output will be styled.
 
 If you have found this plugin useful, consider taking a moment to rate it, or perhaps even a small donation.
-
-**Want to contribute to Clean Testimonials?** Fork Clean Testimonials on Github at http://github.com/lukerollans/clean-testimonials
 
 == Installation ==
 
