@@ -120,6 +120,8 @@ add_shortcode( 'testimonials', 'shortcode_testimonials' );
 // This shortcode outputs a form which visitors can use to submit a testimonial
 function shortcode_testimonial_submission ( $atts ) {
 
+	ob_start();
+	
 	if( isset( $_POST['testimonial-postback'] ) && wp_verify_nonce( $_POST['testimonial_nonce'], 'add-testimonial' ) ):
 	
 		// Require WordPress core functions we require for file upload
@@ -248,6 +250,11 @@ function shortcode_testimonial_submission ( $atts ) {
 	<?php
 	
 	endif;
+	
+	$content = ob_get_contents();
+	ob_end_clean();
+	
+	return $content;
 	
 }
 add_shortcode( 'testimonial-submission-form', 'shortcode_testimonial_submission' );
