@@ -96,11 +96,11 @@
 								<h2><?php echo $_POST['testimonial_client_name']; ?> wrote,</h2>
 
 								<div class="excerpt">
-									<?php echo apply_filters( 'the_excerpt', $post->post_content ); ?>
+									<?php echo apply_filters( 'the_excerpt', $testimonial->post_content ); ?>
 								</div>
 
 								<p class="button-parent">
-									<a href="<?php echo admin_url( 'post.php?post=' . $post->ID . '&action=edit' ); ?>" class="button">
+									<a href="<?php echo admin_url( 'post.php?post=' . $testimonial->ID . '&action=edit' ); ?>" class="button">
 										View Now
 									</a>
 								</p>

@@ -134,7 +134,7 @@ function shortcode_testimonial_submission ( $atts ) {
 		}
 
 		// Build post array object
-		$post = array(
+		$testimonial = array(
 
 			'ID' => NULL,
 			'post_content' => apply_filters( 'the_content', esc_textarea( $_POST['testimonial_description'] ) ),
@@ -160,9 +160,12 @@ function shortcode_testimonial_submission ( $atts ) {
 		$captcha = true;
 
 		// Insert new testimonial, if successful, update meta data
-		if( ( $post_id = wp_insert_post( $post, false ) ) && $captcha ) {
+		if( ( $post_id = wp_insert_post( $testimonial, false ) ) && $captcha ) {
 
 			echo '<pre>' . print_r( $_POST, true ) . '</pre>';
+
+			// Cache testimonial post we just inserted
+			$testimonial = get_post( $post_id );
 
 			update_post_meta( $post_id, 'testimonial_client_name', sanitize_text_field( $_POST['testimonial_client_name'] ) );
 			update_post_meta( $post_id, 'testimonial_client_company_name', sanitize_text_field( $_POST['testimonial_client_company_name'] ) );
@@ -193,6 +196,7 @@ function shortcode_testimonial_submission ( $atts ) {
 				ob_end_clean();
 
 				// Prepare headers and send email
+
 				$headers = array(
 					'From: ' . sprintf( '%s <%s>', get_option( 'blogname' ), $email ),
 					'Content-type: text/html',
