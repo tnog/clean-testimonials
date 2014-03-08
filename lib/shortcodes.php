@@ -29,6 +29,7 @@ function shortcode_testimonial ( $atts ) {
 		foreach( $testimonials as $testimonial ) {
 
 			$testimonial = new WP_Testimonial( $testimonial->ID );
+			$testimonial->word_limit = ( isset( $atts['word_limit'] ) && is_numeric( $atts['word_limit'] ) ? $atts['word_limit'] : -1 );
 			$testimonial->render();
 
 		}
@@ -76,6 +77,7 @@ function shortcode_testimonials ( $atts ) {
 				the_post();
 
 				$testimonial = new WP_Testimonial( get_the_ID() );
+				$testimonial->word_limit = ( isset( $atts['word_limit'] ) && is_numeric( $atts['word_limit'] ) ? $atts['word_limit'] : -1 );
 				$testimonial->render();
 
 			}
