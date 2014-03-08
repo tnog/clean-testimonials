@@ -25,10 +25,10 @@ final class Testimonials_Widget extends WP_Widget {
 			$args['orderby'] = 'rand';
 
 		if( $testimonials = get_posts( $args ) )
-		
+
 			foreach( $testimonials as $testimonial ) {
-					$testimonial = new WP_Testimonial( $testimonial->ID );
-					$testimonial->word_limit = $instance['testimonial_word_limit'];
+				$testimonial = new WP_Testimonial( $testimonial->ID );
+				$testimonial->word_limit = $instance['testimonial_word_limit'];
 			}
 
 		$testimonial->render();
