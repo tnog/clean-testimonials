@@ -21,14 +21,16 @@ final class Testimonials_Widget extends WP_Widget {
 
 		if( is_numeric( $instance['testimonial_id'] ) )
 			$args['include'] = $instance['testimonial_id'];
-		else
+		else {
 			$args['orderby'] = 'rand';
-
+			$args['testimonial_category'] = implode( ',', array_keys( $instance['testimonial_random_category'] ) );
+		}
+		
 		if( $testimonials = get_posts( $args ) )
 
 			foreach( $testimonials as $testimonial ) {
 				$testimonial = new WP_Testimonial( $testimonial->ID );
-				$testimonial->word_limit = $instance['testimonial_word_limit'];
+				$testimonial->word_limit = isset( $instance['testimonial_word_limit'] ) ? $instance['testimonial_word_limit'] : 0;
 			}
 
 		$testimonial->render();
@@ -42,8 +44,9 @@ final class Testimonials_Widget extends WP_Widget {
 		if( !empty( $new_instance['testimonial_id'] ) )
 			$instance['testimonial_id'] = $new_instance['testimonial_id'];
 
-		if( !empty( $new_instance['testimonial_word_limit'] ) )
-			$instance['testimonial_word_limit'] = $new_instance['testimonial_word_limit'];
+		$instance['testimonial_word_limit'] = isset( $new_instance['testimonial_word_limit'] ) ? $new_instance['testimonial_word_limit'] : 0;	
+		$instance['testimonial_random_category'] = $new_instance['testimonial_random_category'];
+
 
 		return $instance;
 
@@ -54,7 +57,8 @@ final class Testimonials_Widget extends WP_Widget {
 		$defaults = array(
 
 			'testimonial_id' => 'random',
-			'testimonial_word_limit' => NULL
+			'testimonial_word_limit' => NULL,
+			'testimonial_random_category' => 'derp'
 
 		);
 
@@ -62,47 +66,39 @@ final class Testimonials_Widget extends WP_Widget {
 
 		?>
 
-		<p>Select a Testimonial to display</p>
+		<p>
+			<label for="testimonial_id">Select a Testimonial to display</label>
+			<select class="testimonial_widget_select" name="<?php echo $this->get_field_name( 'testimonial_id' ); ?>" style="width:100%;">
+				<option value="random">Random</option>
 
-		<select class="testimonial_widget_select" name="<?php echo $this->get_field_name( 'testimonial_id' ); ?>" style="width:100%;">
+				<?php if( $testimonials = get_posts( array( 'post_type' => 'testimonial', 'numberposts' => -1 ) ) ) :?>
 
-			<option value="random">Random</option>
-
-			<?php if( $testimonials = get_posts( array( 'post_type' => 'testimonial', 'numberposts' => -1 ) ) ) :?>
-
-			<?php foreach( $testimonials as $testimonial ): ?>
-			<option value="<?php echo esc_attr( $testimonial->ID ); ?>"<?php echo ( $instance['testimonial_id'] == $testimonial->ID ? ' selected="selected"' : NULL ); ?>><?php echo $testimonial->post_title; ?></option>
-			<?php endforeach; ?>
-
-			<?php endif; ?>
-
-		</select>
-
-		<br />
-
-		<p>Word limit (optional)</p>
-		<input type="Text" name="<?php echo $this->get_field_name( 'testimonial_word_limit' ); ?>" style="width:100%;" value="<?php echo $instance['testimonial_word_limit']; ?>" />
-
-		<br /><br />
-
-		<!--
-		<div class="testimonial_random_category">
-
-			<p>Get random testimonial from category</p>
-
-			<?php if( $categories = get_terms( 'testimonial_category', array( 'hide_empty' => false ) ) ): ?>
-			<select name="<?php echo $this->get_field_name( 'testimonial_random_category' ); ?>" style="width:100%;">
-
-				<option value="any">Any</option>
-
-				<?php foreach( $categories as $category ): ?>
-				<option value="<?php echo $category->slug; ?>"><?php echo $category->name; ?></option>
+				<?php foreach( $testimonials as $testimonial ): ?>
+				<option value="<?php echo esc_attr( $testimonial->ID ); ?>"<?php echo ( $instance['testimonial_id'] == $testimonial->ID ? ' selected="selected"' : NULL ); ?>><?php echo $testimonial->post_title; ?></option>
 				<?php endforeach; ?>
 
+				<?php endif; ?>
 			</select>
-			<?php endif; ?>
+		</p>
 
-		</div>-->
+		<p>
+			<label for="testimonial_word_limit">Word limit (optional)</label>
+			<input type="Text" name="<?php echo $this->get_field_name( 'testimonial_word_limit' ); ?>" style="width:100%;" value="<?php echo $instance['testimonial_word_limit']; ?>" />
+		</p>
+
+		<div class="testimonial_random_category">
+
+			<p>If random, get from specific category (optional)</p>
+
+			<p>
+				<?php if( $categories = get_terms( 'testimonial_category', array( 'hide_empty' => false ) ) ) foreach( $categories as $category ): $id = uniqid(); ?>
+				<input id="project-category-<?php echo $category->slug . '-' . $id; ?>" class="checkbox" type="checkbox" name="<?php echo $this->get_field_name( 'testimonial_random_category' ); ?>[<?php echo $category->slug; ?>]"<?php echo ( ( is_array( $instance['testimonial_random_category'] ) && array_key_exists( $category->slug, $instance['testimonial_random_category'] ) ) ? ' checked="checked"' :  NULL ); ?>></input><label for="project-category-<?php echo $category->slug . '-' . $id; ?>"><?php echo $category->name; ?></label><br />
+				<?php endforeach; ?>
+			</p>
+
+		</div>
+
+		<br />
 
 		<?php
 
