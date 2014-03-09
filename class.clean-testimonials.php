@@ -21,6 +21,16 @@ final class Plugify_Clean_Testimonials {
 		add_filter( 'manage_edit-testimonial_category_columns', array( __CLASS__, 'testimonial_taxonomy_columns' ) );
 		add_filter( 'manage_testimonial_category_custom_column', array( __CLASS__, 'testimonial_taxonomy_column' ), 10, 3 );
 
+		// Install tasks
+		register_activation_hook( trailingslashit( dirname( __FILE__ ) ) . 'init.php', array( &$this, 'install' ) );
+
+	}
+
+	public static function install () {
+
+		// Store timestamp of when activation occured
+		update_option( 'ct_activated', time() );
+
 	}
 
 	public static function init () {

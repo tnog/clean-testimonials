@@ -27,6 +27,7 @@ require_once( $path . 'class.wp-testimonial.php' );
 require_once( $path . 'lib/functions.php' );
 require_once( $path . 'lib/shortcodes.php' );
 
+// Boot Clean Testimonials
 new Plugify_Clean_Testimonials();
 
 ?>
