@@ -98,7 +98,9 @@ The following information might be handy for you to know.
 == Changelog ==
 
 = 1.3.4 =
-* An email notification is now sent to the blog owner when a new testimonial is submitted
+* An email notification is now sent to the site owner when a new testimonial is submitted
+* The Testimonial Widget "random" option now allows you to specify source categories if you wish
+* Added "word_limit" attribute to [testimonial] and [testimonials] shortcodes, allowing you to truncate long testimonials if you wish
 
 = 1.3.3 =
 * Fixed bug causing testimonial submission form to appear incorrectly
