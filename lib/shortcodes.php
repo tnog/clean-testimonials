@@ -159,8 +159,6 @@ function shortcode_testimonial_submission ( $atts ) {
 
 		)->is_valid;
 
-		$captcha = true;
-
 		// Insert new testimonial, if successful, update meta data
 		if( ( $post_id = wp_insert_post( $testimonial, false ) ) && $captcha ) {
 
