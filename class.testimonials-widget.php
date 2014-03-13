@@ -23,7 +23,9 @@ final class Testimonials_Widget extends WP_Widget {
 			$args['include'] = $instance['testimonial_id'];
 		else {
 			$args['orderby'] = 'rand';
-			$args['testimonial_category'] = implode( ',', array_keys( $instance['testimonial_random_category'] ) );
+			if (isset($args['testimonial_category'])) {
+				$args['testimonial_category'] = implode( ',', array_keys( $instance['testimonial_random_category'] ) );
+			}
 		}
 		
 		if( $testimonials = get_posts( $args ) )
