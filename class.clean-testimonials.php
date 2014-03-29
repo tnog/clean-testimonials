@@ -21,6 +21,10 @@ final class Plugify_Clean_Testimonials {
 		add_filter( 'manage_edit-testimonial_category_columns', array( __CLASS__, 'testimonial_taxonomy_columns' ) );
 		add_filter( 'manage_testimonial_category_custom_column', array( __CLASS__, 'testimonial_taxonomy_column' ), 10, 3 );
 
+		// AJAX hooks
+		add_action( 'wp_ajax_get_random_testimonial', array( __CLASS__, 'ajax_get_random_testimonial' ) );
+		add_action( 'wp_ajax_nopriv_get_random_testimonial', array( __CLASS__, 'ajax_get_random_testimonial' ) );
+
 		// Install tasks
 		register_activation_hook( trailingslashit( dirname( __FILE__ ) ) . 'init.php', array( &$this, 'install' ) );
 
@@ -235,6 +239,33 @@ final class Plugify_Clean_Testimonials {
 		</table>
 
 		<?php
+
+	}
+
+	public static function ajax_get_random_testimonial () {
+
+		if( $testimonial = array_pop( get_posts( array(
+
+			'post_type' => 'testimonial',
+			'posts_per_page' => 1,
+			'orderby' => 'rand'
+
+		) ) ) ) {
+
+			$testimonial = new WP_Testimonial( $testimonial->ID );
+
+			ob_start();
+
+			$testimonial->render();
+			$markup = ob_get_contents();
+
+			ob_end_clean();
+
+			wp_send_json_success( array( 'markup' => $markup, 'testimonial_id' => $testimonial->ID ) );
+
+		}
+		else
+			wp_send_json_error();
 
 	}
 

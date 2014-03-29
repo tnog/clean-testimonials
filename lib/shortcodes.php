@@ -13,9 +13,20 @@ function shortcode_testimonial ( $atts ) {
 	$args = array(
 
 		'post_type' => 'testimonial',
-		'numberposts' => 1
+		'posts_per_page' => 1
 
 	);
+
+	if( isset( $atts['category'] ) ) {
+
+		$category = $atts['category'];
+
+		if( is_numeric( $category ) )
+		$category = get_term_by( 'id', $category, 'testimonial_category' )->slug;
+
+		$args['testimonial_category'] = $category;
+
+	}
 
 	if( is_numeric( $atts['id'] ) )
 		$args['include'] = $atts['id'];
@@ -26,16 +37,20 @@ function shortcode_testimonial ( $atts ) {
 
 		ob_start();
 
-		foreach( $testimonials as $testimonial ) {
-
-			$testimonial = new WP_Testimonial( $testimonial->ID );
-			$testimonial->word_limit = ( isset( $atts['word_limit'] ) && is_numeric( $atts['word_limit'] ) ? $atts['word_limit'] : -1 );
-			$testimonial->render();
-
-		}
+		$testimonial = new WP_Testimonial( array_pop( $testimonials )->ID );
+		$testimonial->word_limit = ( isset( $atts['word_limit'] ) && is_numeric( $atts['word_limit'] ) ? $atts['word_limit'] : -1 );
+		$testimonial->render();
 
 		$output = ob_get_contents();
 		ob_end_clean();
+
+		if( isset( $atts['cycle'] ) && $atts['cycle'] ) {
+
+			$output = '<script type="text/javascript" src="' . plugins_url( 'assets/js/ajax.js', dirname( __FILE__ ) ) . '"></script>' .
+								sprintf( '<script type="text/javascript">jQuery(document).ready( function() { cycleTestimonial(%s, "%s"); });</script>', $testimonial->ID, admin_url( 'admin-ajax.php' ) ) .
+								$output;
+
+		}
 
 		return $output;
 
@@ -52,7 +67,10 @@ function shortcode_testimonials ( $atts ) {
 
 		'posts_per_page' => isset( $atts['per_page'] ) ? $atts['per_page'] : 2,
 		'paged' => get_query_var( 'paged' ),
-		'post_type' => 'testimonial',
+		'order' => isset( $atts['order'] ) ? $atts['order'] : 'DESC',
+		'orderby' => isset( $atts['orderby'] ) ? $atts['orderby'] : 'date',
+		'post_type' => 'testimonial'
+
 	);
 
 	$output = '';
@@ -162,8 +180,6 @@ function shortcode_testimonial_submission ( $atts ) {
 		// Insert new testimonial, if successful, update meta data
 		if( ( $post_id = wp_insert_post( $testimonial, false ) ) && $captcha ) {
 
-			echo '<pre>' . print_r( $_POST, true ) . '</pre>';
-
 			// Cache testimonial post we just inserted
 			$testimonial = get_post( $post_id );
 
@@ -185,7 +201,7 @@ function shortcode_testimonial_submission ( $atts ) {
 			// Send email notification to admin
 			if( apply_filters( 'ct_send_new_testimonial_notification', true ) ) {
 
-				$email = get_option( 'admin_email' );
+				$email = apply_filters( 'new_testimonial_notification_email', get_option( 'admin_email' ) );
 
 				// Start output buffering and grab contents of email
 				ob_start();
@@ -203,19 +219,17 @@ function shortcode_testimonial_submission ( $atts ) {
 					'Reply-to: ' . $email
 				);
 
-				echo '<div>===========================</div>';
-				echo $html;
-				echo '<div>===========================</div>';
+				if( apply_filters( 'new_testimonial_notification', true ) )
 				wp_mail( $email, 'New Testimonial | ' . get_option( 'blogname' ), $html, $headers );
 
 			}
 
-			echo '<p>We successfully received your testimonial. If approved, it will appear on our website. Thank you!</p>';
+			echo sprintf( '<p>%s</p>', apply_filters( 'new_testimonial_confirmation_message', 'We successfully received your testimonial. If approved, it will appear on our website. Thank you!' ) );
 
 		}
 		else {
 
-			echo '<p class="error">Sorry, but there was a problem with submitting your testimonial. Please ensure all required fields have been supplied and that you entered the CAPTCHA code correctly.</p>';
+			echo sprintf( '<p class="error">%s</p>', apply_filters( 'new_testimonial_failure_message', 'Sorry, but there was a problem with submitting your testimonial. Please ensure all required fields have been supplied and that you entered the CAPTCHA code correctly.' ) );
 
 		}
 
@@ -223,6 +237,11 @@ function shortcode_testimonial_submission ( $atts ) {
 	?>
 
 	<script src="<?php echo plugins_url( 'assets/js/validation.js', dirname( __FILE__ ) ); ?>"></script>
+	<script type="text/javascript">
+		var RecaptchaOptions = {
+			theme: '<?php echo apply_filters( 'testimonial_submission_captcha_theme', 'clean' ); ?>'
+		}
+	</script>
 
 	<form id="add-testimonial" enctype="multipart/form-data" name="add-testimonial" method="POST" action="<?php the_permalink(); ?>">
 

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hello
 Tags: testimonials,testimonial,recommendation,recommend,testimony,reference,referral,widget,reviews,review
 Requires at least: 2.5
 Tested up to: 3.8.1
-Stable tag: 1.3.4
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,14 @@ Yes, you can use the Testimonial Widget and specify the "random" option, or you 
 
 Yes. Specify the "per_page" attribute when using the [testimonials] shortcode. EG, [testimonials category="10" per_page="5"].
 
+= Available filters =
+The following filters are available in Clean Testimonials so you can customise it to your liking.
+
+1. new_testimonial_notification - Filter whether an email notification should be sent to the administrator when a new testimonial is submitted.
+2. new_testimonial_email - Filter which email address which the new testimonial notification email is sent to. Defaults to administrator email.
+3. new_testimonial_confirmation_message - Filter the text which is displayed when a new testimonial is received.
+4. new_testimonial_failure_message - Filter the text which is displayed when a testimonial submission fails.
+
 = I am a developer, what can you tell me? =
 
 The following information might be handy for you to know.
@@ -96,6 +104,14 @@ The following information might be handy for you to know.
 5. Example use of the [testimonial-submission-form] shortcode. This shortcode will turn this page into a Testimonial submission page for your users
 
 == Changelog ==
+= 1.4 =
+* Introduced new filters to customize testimonial submission behaviour. See FAQ.
+* Added filter to customize CAPTCHA theme. EG, red (default), white, blackglass or clean. See FAQ.
+* Added ability to specify ordering in the [testimonials] shortcode. EG, [testimonials category="5" order="date" orderby="desc"]
+* Added shortcode attribute to allow basic AJAX powered random testimonial cycling
+
+= 1.3.5 =
+* Bug fixes. Woops!
 
 = 1.3.4 =
 * An email notification is now sent to the site owner when a new testimonial is submitted
