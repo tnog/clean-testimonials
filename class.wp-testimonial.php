@@ -77,8 +77,6 @@ final class WP_Testimonial {
 
 			</blockquote>
 
-			<br clear="all">
-
 		</div>
 
 		<?php
