@@ -40,8 +40,6 @@ final class WP_Testimonial {
 
 			<blockquote>
 				<p>
-					<i class="quote-container">
-
 						<?php if( has_post_thumbnail( $this->ID ) ): $image = wp_get_attachment_image_src( get_post_thumbnail_id( $this->ID ), array( 200, 200 ) ); ?>
 						<img style="float: left; padding: 10px;" src="<?php echo $image[0]; ?>" width="<?php echo $image[1]; ?>" height="<?php echo $image[2]; ?>" />
 						<?php endif; ?>
@@ -59,7 +57,6 @@ final class WP_Testimonial {
 						else echo $this->post_content;
 
 						?>
-					</i>
 				</p>
 				<footer>
 					<cite>
