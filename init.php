@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Clean Testimonials
-Plugin URI: http://www.plugify.com.au/plugin/simple-testimonials
+Plugin Name: Modified Clean Testimonials
+Plugin URI: http://noguchi.at
 Description: Allows you to easily and quickly add Testimonials to your WordPress website
-Author: Luke Rollans
-Version: 1.3.4
-Author URI: http://www.lukerollans.me
+Author: Takahiro Noguchi modified from Luke Rollan's original code
+Version: 9.9.9
+Author URI: http://noguchi.at
 */
 
 // Ensure WordPress has been bootstrapped
